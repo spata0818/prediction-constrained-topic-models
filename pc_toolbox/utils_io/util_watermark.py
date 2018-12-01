@@ -1,4 +1,5 @@
 import pip
+from pip._internal.operations import freeze
 
 def make_string_of_reachable_modules_with_versions(context_dict=None):
     if context_dict is None:
@@ -28,7 +29,7 @@ def make_string_of_reachable_modules_with_versions(context_dict=None):
                         mname = req_line.split(">=")[0]
                     reachable_modules[mname] = None
 
-    ver_info_list = [val for val in pip.operations.freeze.freeze()]
+    ver_info_list = [val for val in freeze.freeze()]
 
     explained_reachables = []
     ans_list = []
